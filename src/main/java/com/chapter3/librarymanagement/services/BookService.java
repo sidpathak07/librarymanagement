@@ -38,7 +38,6 @@ public class BookService {
             bookEntity.setAuthor(authorEntity);
         }
         BookEntity savedBook = bookRepository.save(bookEntity);
-        savedBook = bookRepository.findById(savedBook.getId()).get();
         return modelMapper.map(savedBook,BookDTO.class);
     }
 
