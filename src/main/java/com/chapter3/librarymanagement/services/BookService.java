@@ -3,6 +3,7 @@ package com.chapter3.librarymanagement.services;
 import com.chapter3.librarymanagement.dtos.BookDTO;
 import com.chapter3.librarymanagement.entities.AuthorEntity;
 import com.chapter3.librarymanagement.entities.BookEntity;
+import com.chapter3.librarymanagement.projections.MiniBookProjection;
 import com.chapter3.librarymanagement.repositories.AuthorRepository;
 import com.chapter3.librarymanagement.repositories.BookRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,4 +60,22 @@ public class BookService {
         return modelMapper.map(bookEntity,BookDTO.class);
     }
 
+    @Transactional
+    public List<MiniBookProjection> getBooksByAuthor(Long authorId){
+        return bookRepository.getBookByAuthor(authorId);
+    }
+
+    public BookDTO getBookByTitle(String title) {
+        return modelMapper.map(bookRepository.findByBookTitle(title), BookDTO.class);
+    }
+
+    public List<MiniBookProjection> getAllBooks() {
+        return bookRepository.getAllBooks();
+    }
+
+    public List<BookDTO> getAllBookEntities(){
+        return bookRepository.getAllBookEntities().stream()
+                .map(bookEntity -> modelMapper.map(bookEntity, BookDTO.class))
+                .toList();
+    }
 }

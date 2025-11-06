@@ -58,8 +58,12 @@ public class MapperConfig {
             BookDTO dest = ctx.getDestination();
 
             if (src.getAuthor() != null) {
-                dest.setAuthor(mapper.map(src.getAuthor(), MiniAuthorDTO.class));
+                MiniAuthorDTO authorDTO = new MiniAuthorDTO();
+                authorDTO.setId(src.getAuthor().getId());
+                authorDTO.setName(src.getAuthor().getName());
+                dest.setAuthor(authorDTO);
             }
+
             return dest;
         });
 

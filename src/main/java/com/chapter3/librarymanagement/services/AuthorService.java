@@ -1,7 +1,6 @@
 package com.chapter3.librarymanagement.services;
 
 import com.chapter3.librarymanagement.dtos.AuthorDTO;
-import com.chapter3.librarymanagement.dtos.MiniBookDTO;
 import com.chapter3.librarymanagement.entities.AuthorEntity;
 import com.chapter3.librarymanagement.entities.BookEntity;
 import com.chapter3.librarymanagement.exceptions.EntityNotFoundException;
@@ -54,10 +53,10 @@ public class AuthorService {
                 .collect(Collectors.toList());
     }
 
-    public List<MiniBookDTO> getBooksByAuthorId(Long authorId) {
+    /*public List<MiniBookDTO> getBooksByAuthorId(Long authorId) {
         List<BookEntity> bookEntities = authorRepository.findBooksByAuthorId(authorId);
         return bookEntities.stream()
                 .map(bookEntity -> modelMapper.map(bookEntity, MiniBookDTO.class))
                 .collect(Collectors.toList());
-    }
+    }*/
 }

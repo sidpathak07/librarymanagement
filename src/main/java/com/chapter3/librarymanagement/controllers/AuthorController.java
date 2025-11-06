@@ -28,11 +28,11 @@ public class AuthorController {
         return ResponseEntity.ok(new ApiResponse<>(authorDTOList));
     }
 
-    @GetMapping("/booksByAuthor/{authorId}")
-    public ResponseEntity<ApiResponse<List<MiniBookDTO>>> getBooksByAuthorId(@PathVariable Long authorId){
-        List<MiniBookDTO> bookDTOList = authorService.getBooksByAuthorId(authorId);
-        return ResponseEntity.ok(new ApiResponse<>(bookDTOList));
-    }
+//    @GetMapping("/booksByAuthor/{authorId}")
+//    public ResponseEntity<ApiResponse<List<MiniBookDTO>>> getBooksByAuthorId(@PathVariable Long authorId){
+//        List<MiniBookDTO> bookDTOList = authorService.getBooksByAuthorId(authorId);
+//        return ResponseEntity.ok(new ApiResponse<>(bookDTOList));
+//    }
 
     @PostMapping
     public ResponseEntity<ApiResponse<AuthorDTO>> createAuthor(@RequestBody AuthorDTO authorDTO) throws Exception {
